@@ -1,0 +1,5 @@
+﻿# Weather forecast python mailer
+
+Emailer where we can do the following:
+	-> send an email to our entire customer list with the daily weather
+	-> send an email to our entire customer list with the daily schedule
