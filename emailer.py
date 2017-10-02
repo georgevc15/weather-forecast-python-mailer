@@ -27,7 +27,7 @@ def get_schedule():
     return schedule
 
 def get_weather_forecast():
-    url = 'https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ace81c554edf6297e213326bfe5ed2ac'
+    url = 'https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=ace81c554edf6297e213326bfe5ed2ac'
     weather_request = requests.get(url)
     weather_json = weather_request.json()
 
@@ -39,6 +39,12 @@ def get_weather_forecast():
     temp_max = weather_json['main']['temp_max']
     print(temp_min)
     print(temp_max)
+
+    forecast = 'The Circus forecast for today is '
+    forecast += description + ' with a high of ' + str((int(temp_max))
+    forecast += ' and a low of ' + str(int(temp_min)) + '.'
+
+    print(forecast)
 
 def main():
     emails = get_emails()
