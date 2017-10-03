@@ -55,12 +55,20 @@ def send_emails(emails, schedule, forecast):
     server.starttls()
 
     # Login
-    password = input("What's yoour password?")
-    from_email = george.codattudoran@gmail.com
+    password = input("What's your password?")
+    from_email = 'george.codattudoran@gmail.com'
     server.login(from_email, password)
 
-    # Send email
-    server.sendemail(from_email, from_email, 'Test Message')
+    # Send email to entire email list
+    for to_email, name in emails.items():
+        message = 'Subject: Welcome to the Circus!\n'
+        message += 'Hi ' + name + '!\n\n'
+        message += forecast + '\n\n'
+        message += schedule + '\n\n'
+        message += 'Hope to seeyou there!'
+        server.sendmail(from_email, to_email, message)
+
+
     server.quit()
 
                           
@@ -74,6 +82,8 @@ def main():
 
     forecast = get_weather_forecast()
     print(forecast)
+
+    send_emails(emails, schedule, forecast)
                                                        
 main()
 
